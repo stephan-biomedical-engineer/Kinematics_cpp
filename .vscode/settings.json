@@ -1,0 +1,7 @@
+{
+    "cmake.sourceDirectory": "/home/stephan/Kinematics_cpp/Eigen",
+    "files.associations": {
+        "*.h": "cpp",
+        "iostream": "cpp"
+    }
+}
