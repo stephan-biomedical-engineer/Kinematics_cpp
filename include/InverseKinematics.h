@@ -1,21 +1,22 @@
-#ifndef INVERSEKINEMATICS_H
-#define INVERSEKINEMATICS_H
+#ifndef INVERSE_KINEMATICS_H
+#define INVERSE_KINEMATICS_H
 
 #include "ForwardKinematicsDH.h"
 #include <Eigen/Dense>
 
 class InverseKinematics {
 public:
-    InverseKinematics(const ForwardKinematicsDH& fk, int max_iterations = 100, double tolerance = 1e-6);
+    InverseKinematics(ForwardKinematicsDH& fk, int max_iterations = 100, double tolerance = 1e-6);
 
     void error_counter() const;
+
     Eigen::VectorXd compute_ik(const Eigen::Vector3d& desired_position);
 
 private:
-    const ForwardKinematicsDH& fk_;
+    ForwardKinematicsDH& fk_;
     int max_iterations_;
     double tolerance_;
-    mutable int error_count_;  // Tracks iterations for each call (mutable for modification)
+    mutable int error_count_;
 };
 
-#endif // INVERSEKINEMATICS_H
+#endif
